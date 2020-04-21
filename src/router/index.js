@@ -1,28 +1,38 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import NotFound from "../components/NotFound";
+import MuralCreate from "../views/MuralCreate";
+import MuralList from "../views/MuralList";
+import MuralShow from "../views/MuralShow.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
-    component: Home
+    path: "*",
+    component: NotFound,
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
-  }
+    path: "/",
+    name: "mural-list",
+    component: MuralList,
+  },
+  {
+    path: "/mural/create",
+    name: "mural-create",
+    component: MuralCreate,
+  },
+  {
+    path: "/mural/:id",
+    name: "mural-show",
+    component: MuralShow,
+    props: true,
+  },
 ];
 
 const router = new VueRouter({
-  routes
+  mode: "history",
+  routes,
 });
 
 export default router;
