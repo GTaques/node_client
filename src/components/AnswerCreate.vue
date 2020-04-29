@@ -1,6 +1,5 @@
 <template>
   <div id="answer-create">
-    <h2>What's the first thing you'll do once quarantine ends?</h2>
     <form @submit="checkForm()" action>
       <input
         id="answer-title"
@@ -22,19 +21,23 @@ export default {
       errors: [],
       answer: {
         id: null,
-        title: null
+        title: null,
+        ownerQuestion: null
       }
     };
   },
+  props: ["ownerQuestion"],
   methods: {
     saveAnswer() {
       var data = {
-        title: this.answer.title
+        title: this.answer.title,
+        ownerQuestion: this.$props.ownerQuestion
       };
       AnswerService.create(data)
         .then(response => {
           this.answer.id = response.id;
           console.log(response.data);
+          this.refreshRequest();
         })
         .catch(e => {
           console.log(e);
@@ -44,13 +47,14 @@ export default {
       if (this.title) {
         return true;
       }
-
       this.errors = [];
-
       if (!this.name) {
         this.errors.push("Answer required.");
       }
       e.preventDefault();
+    },
+    refreshRequest() {
+      this.$emit("refreshAnswers", "");
     }
   }
 };

@@ -2,7 +2,12 @@
   <div id="mural-create">
     <h2>Ask something to the world</h2>
     <form @submit="checkForm()" action>
-      <input id="mural-title" class="input-text" type="text" v-model="question.title" />
+      <input
+        id="mural-title"
+        class="input-text"
+        type="text"
+        v-model="question.title"
+      />
     </form>
     <button @click="saveMural()" class="button">Submit</button>
     <label for="mural-title">{{ question.title }}</label>
@@ -17,8 +22,8 @@ export default {
     return {
       errors: [],
       question: {
-        id: null,
-        title: null
+        id: "",
+        title: ""
       }
     };
   },
@@ -28,14 +33,14 @@ export default {
         title: this.question.title
       };
       MuralService.create(data)
-      .then(response => {
-        this.question.id = response.id;
-        console.log(response.data);
-
-      })
-      .catch(err => {
-        console.error(err);
-      })
+        .then(response => {
+          this.question.id = response.id;
+          console.log(`Response data: ${response.data._id}`);
+          this.$router.push(`/mural/${response.data._id}`);
+        })
+        .catch(err => {
+          console.error(err);
+        });
     },
     checkForm: function(e) {
       if (this.title) {

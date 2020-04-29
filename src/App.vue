@@ -11,6 +11,11 @@ import NavBar from "@/components/NavBar";
 export default {
   components: {
     NavBar
+  },
+  data() {
+    return {
+      show: false
+    };
   }
 };
 </script>
@@ -29,7 +34,7 @@ body {
 }
 #app {
   box-sizing: border-box;
-  width: 500px;
+  width: 100%;
   padding: 0 20px 20px;
   margin: 0 auto;
 }
@@ -87,6 +92,9 @@ strong {
 }
 small {
   font-size: 80%;
+}
+ul {
+  list-style: none;
 }
 .eyebrow {
   font-size: 20px;

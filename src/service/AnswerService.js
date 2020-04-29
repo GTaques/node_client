@@ -28,6 +28,9 @@ class AnswerService {
   findByTitle(title) {
     return http.get(`/answers?title=${title}`);
   }
+  findByQuestionId(id) {
+    return http.get(`/answers/q/${id}`);
+  }
 }
 
 export default new AnswerService();
