@@ -3,8 +3,8 @@ import axios from "axios";
 export default axios.create({
   baseURL:
     process.env.NODE_ENV === "production"
-      ? "http://localhost:3000/"
-      : "https://taques.herokuapp.com/",
+      ? "https://taques.herokuapp.com/"
+      : "http://localhost:3000/",
   headers: {
     "Content-type": "application/json"
   }

@@ -10,29 +10,29 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "*",
-    component: NotFound,
+    component: NotFound
   },
   {
     path: "/",
     name: "mural-list",
-    component: MuralList,
+    component: MuralList
   },
   {
     path: "/mural/create",
     name: "mural-create",
-    component: MuralCreate,
+    component: MuralCreate
   },
   {
     path: "/mural/:id",
     name: "mural-show",
     component: MuralShow,
-    props: true,
-  },
+    props: true
+  }
 ];
 
 const router = new VueRouter({
   mode: "history",
-  routes,
+  routes
 });
 
 export default router;
