@@ -1,35 +1,49 @@
 <template>
-  <div>
-    <AnswerCreate />
-    <ul>
-      <li v-for="todo in todos" :key="todo.id">{{ todo.title }}</li>
-    </ul>
-    <MuralCard />
+  <div id="mural-list">
+    <h1>Hope Questions from the world</h1>
+    <MuralCard
+      v-for="question in questions"
+      :key="question.id"
+      :question="question"
+    >
+    </MuralCard>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-import AnswerCreate from "../components/AnswerCreate";
+import MuralService from "../service/MuralService";
 import MuralCard from "../components/MuralCard";
 
 export default {
   components: {
-    AnswerCreate,
     MuralCard
   },
   data() {
     return {
-      todos: null
+      questions: [
+        {
+          id: null,
+          title: null,
+          author: null,
+          createdAt: null
+        }
+      ]
     };
   },
-  async created() {
-    try {
-      const res = await axios.get("http://taques.herokuapp.com/todos");
-      this.todos = res.data;
-      console.log(res.data);
-    } catch (err) {
-      console.error(err);
+  created() {
+    this.getMurals();
+  },
+  methods: {
+    getMurals() {
+      MuralService.getAll()
+        .then(response => {
+          console.log(response);
+          this.questions = response.data;
+          console.log(this.questions[0]);
+        })
+        .catch(err => {
+          console.error(err);
+        });
     }
   }
 };

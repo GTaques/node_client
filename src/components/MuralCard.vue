@@ -1,18 +1,19 @@
 <template>
   <router-link
     class="mural-link"
-    :to="{ name: 'mural-show', params: { id: '3212' } }"
+    :to="{ name: 'mural-show', params: { id: question._id } }"
   >
     <div class="mural-card -shadow">
-      <span class="eyebrow">{{ mural.date }} às {{ mural.time }}</span>
-      <h4 class="title">{{ mural.title }}</h4>
-      <span>{{ mural.author }}</span>
+      <span class="eyebrow">{{ question.createdAt }}</span>
+      <h4 class="title">{{ question.title }}</h4>
+      <span>{{ question.author }}</span>
     </div>
   </router-link>
 </template>
 
 <script>
 export default {
+  props: ["question"],
   data() {
     return {
       mural: {
