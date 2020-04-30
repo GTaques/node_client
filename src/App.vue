@@ -130,7 +130,7 @@ ul {
   background: linear-gradient(to right, #16c0b0, #84cf6a);
   color: #fff;
 }
-button,
+/* button,
 label,
 input,
 optgroup,
@@ -141,8 +141,8 @@ textarea {
   font-size: 100%;
   line-height: 1.15;
   margin: 0;
-}
-button,
+} */
+/* button,
 input {
   overflow: visible;
 }
@@ -182,8 +182,8 @@ textarea {
   width: 100%;
   overflow: auto;
   font-size: 20px;
-}
-[type="checkbox"],
+} */
+/* [type="checkbox"],
 [type="radio"] {
   box-sizing: border-box;
   padding: 0;
@@ -220,8 +220,8 @@ textarea {
 }
 [hidden] {
   display: none;
-}
-select {
+} */
+/* select {
   width: 100%;
   height: 52px;
   padding: 0 24px 0 10px;
@@ -246,5 +246,5 @@ select:focus::ms-value {
 }
 select::ms-expand {
   opacity: 0;
-}
+} */
 </style>
