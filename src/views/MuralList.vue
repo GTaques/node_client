@@ -1,6 +1,6 @@
 <template>
   <div id="mural-list">
-    <h1>Hope Questions from the world</h1>
+    <h2>Hope Questions from the world</h2>
     <MuralCard
       v-for="question in questions"
       :key="question.id"
